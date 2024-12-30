@@ -4,7 +4,7 @@ function gethumanResult() {
     let humanInput = prompt(`Round ${roundNo} - Pls choose: Scissors, Paper or Rock!`).toLowerCase();
     if (!(humanInput == "scissors" || humanInput == "paper" || humanInput == "rock")) {
 
-        let defaultChoice = () => {
+        let randomChoice = () => {
             let userChoice = Math.floor((Math.random() * 3) + 1);
             let humanInput;
             if (userChoice == 1) {
@@ -16,8 +16,8 @@ function gethumanResult() {
             }
             return humanInput;
         }
-        humanInput = defaultChoice();
-        console.log(`\nWe will be giving a default value of ${humanInput} for round ${roundNo} since you did not give a valid option`)
+        humanInput = randomChoice();
+        console.log(`\nWe will be giving a random value of ${humanInput} for round ${roundNo} since you did not give a valid option`)
     }
 
     return humanInput;
