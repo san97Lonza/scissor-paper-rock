@@ -1,7 +1,7 @@
 let roundNo = 1;
 
 function gethumanResult() {
-    let humanInput = prompt("Pls choose: Scissors, Paper or Rock!").toLowerCase();
+    let humanInput = prompt(`Round ${roundNo} - Pls choose: Scissors, Paper or Rock!`).toLowerCase();
     if (!(humanInput == "scissors" || humanInput == "paper" || humanInput == "rock")) {
 
         let defaultChoice = () => {
