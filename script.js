@@ -1,5 +1,24 @@
+let roundNo = 1;
+
 function gethumanResult() {
     let humanInput = prompt("Pls choose: Scissors, Paper or Rock!").toLowerCase();
+    if (!(humanInput == "scissors" || humanInput == "paper" || humanInput == "rock")) {
+
+        let defaultChoice = () => {
+            let userChoice = Math.floor((Math.random() * 3) + 1);
+            let humanInput;
+            if (userChoice == 1) {
+                humanInput = "paper";
+            } else if (userChoice == 2) {
+                humanInput = "scissors";
+            } else {
+                humanInput = "rock";
+            }
+            return humanInput;
+        }
+        humanInput = defaultChoice();
+        console.log(`\nWe will be giving a default value of ${humanInput} for round ${roundNo} since you did not give a valid option`)
+    }
 
     return humanInput;
 }
@@ -21,13 +40,15 @@ function playGame() {
     let humanScore = 0;
     let computerScore = 0;
 
+
     function playRound(humanChoice, computerChoice) {
 
         let computerResult = computerChoice();
         let humanResult = humanChoice();
-
+        console.log(`\n\tRound ${roundNo}`)
         console.log(`Your choice is ${humanResult}`);
-        console.log(`The computer choice is ${computerResult}`);
+        console.log(`The computer choice is ${computerResult}\n`);
+        roundNo += 1;
 
 
         if (humanResult === computerResult) {
@@ -49,14 +70,14 @@ function playGame() {
 
     function checkScore() {
         if (humanScore === computerScore) {
-            console.log(`Your score is ${humanScore}\nThe Computer score is ${computerScore}\nIt is a tie`);
+            console.log(`\nYour score is ${humanScore}\nThe Computer score is ${computerScore}\nIt is a tie after ${roundNo - 1} rounds`);
             return;
         } else if (humanScore > computerScore) {
-            console.log(`You won! Your total score is ${humanScore}\nThe Computer total score is ${computerScore}\n`);
+            console.log(`\nYou won! Your total score is ${humanScore}\nThe Computer total score is ${computerScore}.\nYou won ${humanScore}/${roundNo - 1} rounds.`);
             return;
 
         } else {
-            console.log(`The Computer won! Your total score is ${humanScore}\nThe Computer total score is ${computerScore}\n`);
+            console.log(`\nThe Computer won! Your total score is ${humanScore}\nThe Computer total score is ${computerScore}\nThe Computer beat you in ${computerScore}/${roundNo - 1} rounds.`);
             return;
         }
     }
